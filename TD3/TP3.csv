@@ -1,0 +1,105 @@
+id	text	origine
+0	Please post your personal projects, startups, product placements, collaboration needs, blogs etc.Please mention the payment and pricing requirements for products and services.Please do not post link shorteners, link aggregator websites , or auto-subscribe links.--Any abuse of trust will lead to bans.Encourage others who create new posts for questions to post here instead!Thread will stay alive until next one so keep posting after the date in the title.--Meta: This is an experiment. If the community doesnt like this, we will cancel it. This is to encourage those in the community to promote their work by not spamming the main threads.	reddit
+1	**For Job Postings** please use this template>Hiring: \[Location\], Salary:\[\], \[Remote | Relocation\], \[Full Time | Contract | Part Time\]    and \[Brief overview, what you're looking for\]**For Those looking for jobs** please use this template>Want to be Hired: \[Location\], Salary Expectation:\[\], \[Remote | Relocation\], \[Full Time | Contract | Part Time\]  Resume: \[Link to resume\] and \[Brief overview, what you're looking for\]&#x200B;Please remember that this community is geared towards those with experience.	reddit
+2	I am happy with the success of LLMs, but I am not much of a NLP fan. What do you think will be the next big thing that will achieve commercial success or wide range of applicability (useful both in startups and large companies)?    E.g., are RL or GNNs going to start being used in practice more widely (I know GNNs are used in large companies, but still I am not aware that they are widely used)?I consider computer vision a well established field considering practical applications, but is there maybe something new happening there?	reddit
+3	1. Here's a link to the Project Page: https://zkf1997.github.io/DART/2. Here's a link to the paper: https://arxiv.org/html/2410.05260v13. Here's My Question: I'm trying to recreate this paper in the form of a browser based app for me to play around with. Where would I find the motion data and text annotations necessary to train the VAE?	reddit
+4	Hey everyone,I'm looking to deploy [this model](https://huggingface.co/MoritzLaurer/mDeBERTa-v3-base-mnli-xnli) (mDeBERTa-v3-base-mnli-xnli) on-premise and need some advice on the hardware requirements (GPU, CPU, RAM, etc.).* Has anyone deployed this model locally or have recommendations for the minimum hardware setup (especially for GPU/VRAM requirements)?* What would be the recommended specs for efficient performance and fine-tuning tasks?Additionally, I'm curious about the general process to figure out hardware requirements for models like this. How do you typically approach determining the necessary hardware for deploying transformer models in local environments?Any help or pointers would be greatly appreciated! Thanks in advance!	reddit
+5	Hello,For those of yall knowledgeable in the mixture of experts literature, what are some papers that route to a single expert? Furthermore, most papers evenly distribute the workload across experts (or try to). Are there papers on methods where a specific expert is the correct choice? e.g. we don’t necessarily need equal workload distribution acrosss experts 	reddit
+6		reddit
+7	Hi. Anyone worked with open-metric learning and image retrieval?I could really use your help. I've tried dinov2 embeddings and its failed to retrieve for like 10/100 cases. So I'm trying to finetune a model on my dataset to get good embeddings. But here's the problem: IDONTHAVELABELS. NO LABELS.I need to train model just on images and get the embedding. I've tried ViT, CLIP, ResNet, Inception. Dinov2 was the best, clip came second (top 5 similar image wise). And its not possible to finetune dinov2 because meta haven't released their model weights, just the model backbone. So that was a dead end. I was looking into Metric learning, and trying to bring images closer together, OML, which still needed labels. So I was looking into self taught metric learning without labels (A CVPR 2021) but that architecture caused me an error. When we have to finetune models, labels come into play, and I don't have any labels. Before you tell me to caption my dataset, I've already tried that using BLIP-2. My images are very specific and abstract, blip2 hallucinated most of the captions and got most of them wrong. To finetune blip2 on my dataset I need to buy an external gpu since the model is huge and can't be supported on google colab pro. That also was a dead end. Please help me. I'm trying to build a robust image retreiver	reddit
+8	..or was there an LLM training logbook of sorts shared by Google Brain researchers which detailed all the experiments they did, and the approaches they tried while training an LLM? I distinctly remember seeing such a project up on GitHub but it's nowhere to be seen now ! It was meant as a sort of guide for anyone setting out to train an LLM to avoid common pitfalls and such.It might not have been google specifically though.Am I dreaming ?(Edit: more context) 	reddit
+9	1. What would you recommend someone moving from academia to join an industry research lab do in their first 30, 90, and 180 days to ensure they are making a good contribution to the company?2. Are there habits or ways of thinking in academia which you need to actively move away from/manage in industry research environments?3. In general, what skills are most commonly lacking or weak in employees coming from academia and/or which skills should an academic brush up/learn on before joining a company?4. Any other tips/advice?	reddit
+10	"It is assumed that, in the primordial plasma, at the temperatures above the
+mass of electron, fermions are in the neutral state being the superposition of
+particle and antiparticle. There exists neutral proton-electron symmetry.
+Proton-electron equilibrium is defined by the proton-electron mass difference.
+At the temperature equal to the mass of electron, pairs of neutral electrons
+annihilate into photons, and pairs of neutral protons and electrons survive as
+protons and electrons."	arxiv
+11	"The use of the existing proton storage rings combined with electron linear
+accelerator as a ring-linac type electron-proton or photon-proton collider is
+investigated. The total CM-energy of Proton-ring and Electron-linac Collider
+(PRELC) is in the range of 1.0 TeV. The most important physical issues are
+listed and the most critical machine aspects of the PRELC are studied. It is
+shown that the luminosities in the range of $10^{31}$ to $10^{32}$ could be
+achieved. The PRELC could be used simultaneously with the $e^+e^-$-collider if
+the refocused electron beam could be used as the electron beam for the PRELC."	arxiv
+12	"Multicomponent density functional theory (DFT) enables the consistent quantum
+mechanical treatment of both electrons and protons. A major challenge has been
+the design of electron-proton correlation functionals that produce even
+qualitatively accurate proton densities. Herein an electron-proton correlation
+functional, epc17, is derived analogously to the Colle-Salvetti formalism for
+electron correlation and is implemented within the nuclear-electronic orbital
+(NEO) framework. The NEO-DFT/epc17 method produces accurate proton densities
+efficiently and is promising for diverse applications."	arxiv
+13	"Scenario of baryogenesis is considered in which primordial plasma starting
+from the Planck scale consists of primordial particles being the precursors of
+electrons and clusters of particles being the precursors of protons.
+Equilibrium between the precursors of protons and the precursors of electrons
+is defined by the proton-electron mass difference. At the temperature equal to
+the mass of electron, primordial particles transit into protons, electrons,
+photons."	arxiv
+14	"Binary mixtures of electrons with protons and of electrons with photons
+subjected to external electromagnetic fields are analyzed by using the Anderson
+and Witting model equation. The relativistic laws of Ohm and Fourier are
+determined as well as general expressions for the electrical and thermal
+conductivities for relativistic ionized gas mixtures. Explicit expressions for
+the transport coefficients are given for the particular cases: a
+non-relativistic mixture of protons and non-degenerate electrons; an
+ultra-relativistic mixture of photons and non-degenerate electrons; a
+non-relativistic mixture of protons and completely degenerate electrons; an
+ultra-relativistic mixture of photons and completely degenerate electrons and a
+mixture of non-relativistic protons and ultra-relativistic completely
+degenerate electrons."	arxiv
+15	"Shuttle-assisted charge transfer is pivotal for the efficient energy
+transduction from the food-stuff electrons to protons in the respiratory chain
+of animal cells and bacteria. The respiratory chain consists of four
+metalloprotein Complexes (I-IV) embedded in the inner membrane of a
+mitochondrion. Three of these complexes pump protons across the membrane,
+fuelled by the energy of food-stuff electrons. Despite extensive biochemical
+and biophysical studies, the physical mechanism of this proton pumping is still
+not well understood. Here we present a nanoelectromechanical model of the
+electron-driven proton pump related to the second loop of the respiratory
+chain, where a lipid-soluble ubiquinone molecule shuttles between the Complex I
+and Complex III, carrying two electrons and two protons. We show that the
+energy of electrons can be converted to the transmembrane proton potential
+gradient via the electrostatic interaction between electrons and protons on the
+shuttle. We find that the system can operate either as a proton pump, or, in
+the reverse regime, as an electron pump. For membranes with various
+viscosities, we demonstrate that the uphill proton current peaks near the body
+temperature $T \approx 37 ^{\circ}$C."	arxiv
+16	"Proton mirror modes are large amplitude nonpropagating structures frequently
+observed in the magnetosheath. It has been suggested that electron temperature
+anisotropy can enhance the proton mirror instability growth rate while leaving
+the proton cyclotron instability largely unaffected, therefore causing the
+proton mirror instability to dominate the proton cyclotron instability in
+Earth's magnetosheath. Here, we use particle-in-cell simulations to investigate
+the electron temperature anisotropy effects on proton mirror instability
+evolution. Contrary to the hypothesis, electron temperature anisotropy leads to
+excitement of the electron whistler instability. Our results show that the
+electron whistler instability grows much faster than the proton mirror
+instability and quickly consumes the electron free energy, so that there is no
+electron temperature anisotropy left to significantly impact the evolution of
+the proton mirror instability."	arxiv
+17	"We compute single inclusive hadron production in proton-proton and
+proton-nucleus collisions consistently within the CGC framework. The parameters
+in the calculations are obtained from electron-proton DIS and standard nuclear
+geometry. We obtain a good description of the DIS data without an anomalous
+dimension in the initial condition of the BK evolution and get a good agreement
+with the available single inclusive proton-proton and proton-nucleus data."	arxiv
+18	"The consistency between electron-scattering and proton-scattering is examined
+through the fourth moment of the charge distribution."	arxiv
+19	"Respiration in bacteria involves a sequence of energetically-coupled electron
+and proton transfers creating an electrochemical gradient of protons (a
+proton-motive force) across the inner bacterial membrane. With a simple kinetic
+model we analyze a redox loop mechanism of proton-motive force generation
+mediated by a molecular shuttle diffusing inside the membrane. This model,
+which includes six electron-binding and two proton-binding sites, reflects the
+main features of nitrate respiration in E. coli bacteria. We describe the time
+evolution of the proton translocation process. We find that the electron-proton
+electrostatic coupling on the shuttle plays a significant role in the process
+of energy conversion between electron and proton components. We determine the
+conditions where the redox loop mechanism is able to translocate protons
+against the transmembrane voltage gradient above 200 mV with a thermodynamic
+efficiency of about 37%, in the physiologically important range of temperatures
+from 250 to 350 K."	arxiv
