@@ -1,7 +1,7 @@
 # Correction de G. Poux-Médard, 2021-2022
 
 # =============== 2.1 : La classe Document ===============
-class Document:
+class Documents:
     # Initialisation des variables de la classe
     def __init__(self, titre="", auteur="", date="", url="", texte=""):
         self.titre = titre
@@ -9,45 +9,48 @@ class Document:
         self.date = date
         self.url = url
         self.texte = texte
+        self.type = "Documents"
 
 # =============== 2.2 : REPRESENTATIONS ===============
     # Fonction qui renvoie le texte à afficher lorsqu'on tape repr(classe)
     def __repr__(self):
-        return f"Titre : {self.titre}\tAuteur : {self.auteur}\tDate : {self.date}\tURL : {self.url}\tTexte : {self.texte}\t"
+        return f"Titre : {self.titre}\tAuteur : {self.auteur}\tDate : {self.date}\tURL : {self.url}\tTexte : {self.texte}\tType : {self.type}\t"
 
     # Fonction qui renvoie le texte à afficher lorsqu'on tape str(classe)
     def __str__(self):
         return f"{self.titre}, par {self.auteur}"
+    def getType(self):
+        pass
 
 # =============== 2.3 : ACCESSEURS/MUTATEURS ===============
-    def getTitre():
+    def getTitre(self):
         return self.titre
     
-    def setTitre(titre):
+    def setTitre(self,titre):
         self.titre = titre
     
-    def getAuteur():
+    def getAuteur(self):
         return self.auteur
     
-    def setAuteur(auteur):
+    def setAuteur(self,auteur):
         self.auteur = auteur
     
-    def getDate():
+    def getDate(self,):
         return self.date
     
-    def setDate(date):
+    def setDate(self,date):
         self.date = date
     
-    def getUrl():
+    def getUrl(self):
         return self.url
     
-    def setUrl(url):
+    def setUrl(self,url):
         self.url = url
 
-    def getTexte():
+    def getTexte(self):
         return self.texte
 
-    def setTexte(texte):
+    def setTexte(self,texte):
         self.texte = texte
 # =============== 2.4 : La classe Author ===============
 class Author:
@@ -61,49 +64,38 @@ class Author:
         self.production.append(production)
     def __str__(self):
         return f"Auteur : {self.name}\t# productions : {self.ndoc}"
-
-
-class RedditDocument(Document):
-    # Initialisation des variables de la classe
-    def __init__(self, titre="", auteur="", date="", url="", texte="",nbcom=""):
-        super().init(titre,auteur,date,url,texte)
-        self.nbcom = nbcom
     
-    # Fonction qui renvoie le texte à afficher lorsqu'on tape repr(classe)
+
+class RedditDocument (Documents):
+    
+    def __init__(self, titre="", auteur="", date="", url="", texte="", nb_comments=0):
+        super().__init__(titre, auteur, date, url, texte)
+        self.nb_comments = nb_comments
+        self.type = self.getType()
+        
     def __repr__(self):
-        return f"{super().__repr__}Nombre commentaire : {self.nbcom}\t"
-
-    # Fonction qui renvoie le texte à afficher lorsqu'on tape str(classe)
+        return f"Titre : {self.titre}\tAuteur : {self.auteur}\tDate : {self.date}\tURL : {self.url}\tTexte : {self.texte}\t# Nombre commentaire : {self.nb_comments}\t"
+    
     def __str__(self):
-        return f"{super.__str__}, qui a reçu {self.nbcom} commentaires"
+        return f"{self.titre}, par {self.auteur}, # Nombre commentaire : {self.nb_comments}"
 
-    # Fonction qui renvoie le nombre de commentaire
-    def getNbCom():
-        return self.nbcom
-
-    # Fonction qui écrase le nombre de commentaire
-    def setNbComt(nbcom):
-        self.nbcom = nbcom
+    def getType(self):
+        return "RedditDocument"
         
 
-class ArxivDocument(Document):
-    # Initialisation des variables de la classe
-    def __init__(self, titre="", auteur="", date="", url="", texte="",coaut=""):
-        super().init(titre,auteur,date,url,texte)
-        self.coaut = coaut
+class ArxivDocument(Documents):
     
-    # Fonction qui renvoie le texte à afficher lorsqu'on tape repr(classe)
+    def __init__(self, titre="", auteur="", date="", url="", texte="", co_auteurs=None):
+        if co_auteurs is None:
+            co_auteurs = []
+        super().__init__(titre, auteur, date, url, texte)
+        self.co_auteurs = co_auteurs
+        self.type = self.getType()
+
     def __repr__(self):
-        return f"{super().__repr__}Co-auteur : {self.coaut}\t"
+        return f"Titre : {self.titre}\tAuteur : {self.auteur}\tDate : {self.date}\tURL : {self.url}\tTexte : {self.texte}\tCo-auteurs : {', '.join(self.co_auteurs)}\t"
 
-    # Fonction qui renvoie le texte à afficher lorsqu'on tape str(classe)
     def __str__(self):
-        return f"{super.__str__}, qui a comme co-auteur {self.coaut}"
-
-    # Fonction qui renvoie le nombre de commentaire
-    def getCoAut():
-        return self.coaut
-
-    # Fonction qui écrase le nombre de commentaire
-    def setCoAut(coauth):
-        self.coaut = coaut
+        return f"{self.titre}, par {self.auteur}, Co-auteurs : {', '.join(self.co_auteurs)}"
+    def getType(self):
+        return "ArxivDocument"
