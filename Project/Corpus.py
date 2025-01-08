@@ -56,41 +56,6 @@ class Corpus:
     
     def generer_chaine(self):
         return ' '.join(doc.texte for doc in self.id2doc.values())
-    
-    def search(self, keywords):
-        results = []
-        corpus_text = self.generer_chaine()
-        passages = re.findall(r'([^.]*?(' + '|'.join(re.escape(keyword) for keyword in keywords) + ')[^.]*\.)', corpus_text, re.IGNORECASE)
-        for passage in passages:
-            results.append(passage[0])
-        return results
-
-    
-    def concorde (self, expression, taille_contexte):
-        results = []
-        corpus_text = self.generer_chaine()
-        pattern = re.compile(r'(.{0,' + str(taille_contexte) + r'})(' + re.escape(expression) + r')(.{0,' + str(taille_contexte) + r'})', re.IGNORECASE)
-        matches = pattern.findall(corpus_text)
-        for match in matches:
-            gauche, motif, droit = match
-            results.append([gauche.strip(), motif, droit.strip()])
-        df = pd.DataFrame(results, columns=['Contexte gauche', 'Motif trouvé', 'Contexte droit'])
-        return df
-
-    def nettoyer_texte(self,texte):
-        # Mise en minuscule
-        texte = texte.lower()
-        
-        # Remplacement des passages à la ligne
-        texte = texte.replace('\n', ' ')
-        
-        # Remplacement des ponctuations et des chiffres
-        texte = re.sub(r'[^\w\s]', ' ', texte)  # Remplace les ponctuations par des espaces
-        texte = re.sub(r'\d+', ' ', texte)  # Remplace les chiffres par des espaces
-        
-        # Suppression des espaces multiples
-        texte = re.sub(r'\s+', ' ', texte).strip()
-        return texte
 
     def construire_vocabulaire(self):
         vocabulaire = set()
@@ -99,43 +64,3 @@ class Corpus:
             vocabulaire.update(mots)
         return {mot: idx for idx, mot in enumerate(vocabulaire)}
     
-    
-    def construire_tableau_freq(self):
-        vocabulaire = self.construire_vocabulaire()
-        freq = pd.DataFrame(0, index=self.id2doc.keys(), columns=vocabulaire.keys())
-        
-        for doc_id, doc in self.id2doc.items():
-            mots = self.nettoyer_texte(doc.texte).split()
-            for mot in mots:
-                if mot in vocabulaire:
-                    freq.at[doc_id, mot] += 1
-                    
-        doc_freq = self.calculer_document_frequency(freq)
-        
-        freq.loc['Document Frequency'] = doc_freq
-        
-        return freq
-
-    def calculer_document_frequency(self, freq):
-        doc_freq = (freq > 0).sum(axis=0)
-        return doc_freq
-
-    def stats(self, d):
-        vocabulaire = self.construire_vocabulaire()
-        tableau_freq = self.construire_tableau_freq()
-        
-        # Affichage du tableau de fréquence
-        print("\nTableau de fréquence :")
-        print(tableau_freq)
-        
-        # Nombre de mots différents
-        nb_mots_differents = len(vocabulaire)
-        print(f"Nombre de mots différents dans le corpus: {nb_mots_differents}")
-        
-        # Les n mots les plus fréquents
-        n = d  # Assuming d is the number of top frequent words to display
-        mots_les_plus_frequents = tableau_freq.loc['Document Frequency'].sort_values(ascending=False).head(n)
-        print(f"Les {n} mots les plus fréquents dans le corpus:")
-        print(mots_les_plus_frequents)
-
-
