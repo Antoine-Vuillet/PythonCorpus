@@ -24,7 +24,7 @@ class SearchEngine:
         self.mat_TFxIDF_df = pd.DataFrame(self.mat_TFxIDF, columns=self.vocabulaire.keys())
 
     def tokeniser(self, texte):
-        mots = re.findall(r'\b\w+\b', texte.lower())
+        mots = re.findall(r'\b[a-zA-Z]+\b', texte.lower())
         return sorted(set(mots))
 
     def construire_vocabulaire(self):
@@ -41,7 +41,7 @@ class SearchEngine:
     def construire_matrice_tf(self):
         lignes, colonnes, donnees = [], [], []
         for i, doc in enumerate(self.corpus.id2doc.values()):
-            mots = re.findall(r'\b\w+\b', doc.texte.lower())
+            mots = self.tokeniser(doc.texte) 
             for mot in mots:
                 if mot in self.vocabulaire:
                     lignes.append(i)
