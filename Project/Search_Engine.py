@@ -4,6 +4,7 @@ import numpy as np
 from scipy.sparse import csr_matrix
 from Corpus import Corpus, ArxivDocument
 from tqdm import tqdm
+import matplotlib.pyplot as plt
 
 
 class SearchEngine:
@@ -72,3 +73,47 @@ class SearchEngine:
             result_docs.append((index + 1, scores[index]))
         result_df = pd.DataFrame(result_docs, columns=['Document', 'Score'])
         return result_df
+    
+    def timeline(self, mots_cles):
+        propre = self.corpus.nettoyer_texte(mots_cles)
+        words_id = {}
+        for mot in propre:
+            if mot in self.vocabulaire:
+                words_id[mot] = self.vocabulaire[mot]
+        matf = self.construire_matrice_tf()
+        counting = dict()
+        for doc_id in range(matf.shape[0]):
+            doc_row = matf[doc_id, :]
+            count =sum(doc_row[0, word_id] > 0 for word_id in words_id.values() if word_id < matf.shape[1])
+            if count > 0:
+                counting[doc_id] = count
+        df = pd.DataFrame(list(counting.items()), columns=["Date", "Occurrences"])
+
+        df = df.sort_values("Date")
+
+
+
+
+        plt.figure(figsize=(10, 5))
+
+        plt.plot(df["Date"], df["Occurrences"], marker="o",linestyle="-", label=f"'{propre}'")
+
+        plt.title(f"Évolution temporelle du mot '{propre}'")
+
+        plt.xlabel("Date")
+
+        plt.ylabel("Occurrences")
+
+        plt.grid(True)
+
+        plt.legend()
+
+        plt.show()
+        return counting
+        
+
+
+        
+
+    
+

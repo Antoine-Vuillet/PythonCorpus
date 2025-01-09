@@ -30,7 +30,7 @@ for post in hot_posts:
 query_terms = ["artificial intelligence"]
 max_results = 50
 encoded_query = urllib.parse.quote(" ".join(query_terms))
-url = f'http://export.arxiv.org/api/query?search_query=all:{"+".join(encoded_query)}&start=0&max_results={max_results}'
+url = f'http://export.arxiv.org/api/query?search_query=all:{encoded_query}&start=0&max_results={max_results}'
 data = urllib.request.urlopen(url)
 data = xmltodict.parse(data.read().decode('utf-8'))
 
