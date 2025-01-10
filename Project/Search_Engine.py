@@ -77,9 +77,13 @@ class SearchEngine:
     def timeline(self, mots_cles):
         propre = self.corpus.nettoyer_texte(mots_cles)
         words_id = {}
-        for mot in propre:
-            if mot in self.vocabulaire:
-                words_id[mot] = self.vocabulaire[mot]
+        if " " in propre:
+            for mot in propre:
+                if mot in self.vocabulaire:
+                    words_id[mot] = self.vocabulaire[mot]
+        else:
+            if propre in self.vocabulaire:
+                words_id[propre] = self.vocabulaire[propre]
         matf = self.construire_matrice_tf()
         counting = dict()
         for doc_id in range(matf.shape[0]):
