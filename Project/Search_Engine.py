@@ -41,13 +41,23 @@ class SearchEngine:
 
     def construire_matrice_tf(self):
         lignes, colonnes, donnees = [], [], []
+    
         for i, doc in enumerate(self.corpus.id2doc.values()):
-            mots = self.tokeniser(doc.texte) 
+            mots = self.corpus.nettoyer_texte(doc.texte)
+            mots = mots.split()
+            word_counts = {}
+            
             for mot in mots:
+                if mot in word_counts:
+                    word_counts[mot] += 1
+                else:
+                    word_counts[mot] = 1
+            for mot, count in word_counts.items():
                 if mot in self.vocabulaire:
                     lignes.append(i)
                     colonnes.append(self.vocabulaire[mot])
-                    donnees.append(1)
+                    donnees.append(count)
+
         return csr_matrix((donnees, (lignes, colonnes)), shape=(len(self.corpus.id2doc), len(self.vocabulaire)))
 
     def calculer_doc_freq(self):
@@ -85,12 +95,15 @@ class SearchEngine:
             if propre in self.vocabulaire:
                 words_id[propre] = self.vocabulaire[propre]
         matf = self.construire_matrice_tf()
+        print(matf[:5, :5])
+        print(words_id)
         counting = dict()
         for doc_id in range(matf.shape[0]):
             doc_row = matf[doc_id, :]
-            count = sum(doc_row[0, word_id] > 0 for word_id in words_id.values() if word_id < matf.shape[1])
+            count = sum(doc_row[0, word_id] for word_id in words_id.values() if word_id < matf.shape[1])
             if count > 0:
                 counting[doc_id] = count
+                print(f"Document {doc_id}: {count} occurrences")
 
         newlist = {}
         for x in counting.keys():
@@ -98,6 +111,7 @@ class SearchEngine:
             newlist[key] = counting[x]
 
         df = pd.DataFrame(list(newlist.items()), columns=["Date", "Occurrences"])
+        print(df.head())
         df["Date"] = pd.to_datetime(df["Date"])
         df["Month_Year"] = df["Date"].dt.to_period("M") 
 
