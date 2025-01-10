@@ -130,7 +130,7 @@ class SearchEngine:
         plt.tight_layout()
         plt.show()
 
-        return counting
+        return newlist
 
         
 

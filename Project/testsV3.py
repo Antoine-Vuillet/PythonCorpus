@@ -49,5 +49,11 @@ for year in years:
 
 engine = Search_Engine.SearchEngine(corp)
 
-print(engine.timeline("text"))
-    
+def timeline_test():
+    result = engine.timeline("text")
+    if result["2023/01/09"] == 3:
+        print("La méthode de timeline fonctionne")
+    else:
+        print("La méthode de timeline ne fonctionne pas")
+
+timeline_test()
