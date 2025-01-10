@@ -2,6 +2,8 @@ import Classes
 import Corpus
 import Search_Engine
 
+
+#Création du corpus de base
 arxiv_doc = Classes.ArxivDocument(
     titre="ArxivTitle",
     auteur="John Doe",
@@ -22,6 +24,7 @@ corp = Corpus.Corpus("thiscorpus")
 corp.add(reddit_doc)
 corp.add(arxiv_doc)
 
+#Test unitaire de la création d'un moteur de recherche
 def searchEnginecreation_test():
     engine =Search_Engine.SearchEngine(corp)
     if len(engine.vocabulaire) > 0:
@@ -29,6 +32,7 @@ def searchEnginecreation_test():
     else:
         print("La création du moteur de recherche ne fonctionne pas")
 
+#Test unitaire de la fonction de recherche du moteur
 def searching_test():
     test_doc = Classes.RedditDocument(
         titre="testing",

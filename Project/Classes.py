@@ -66,6 +66,7 @@ class Author:
         return f"Auteur : {self.name}\t# productions : {self.ndoc}"
     
 
+# =============== La classe RedditDocument ===============
 class RedditDocument (Documents):
     
     def __init__(self, titre="", auteur="", date="", url="", texte="", nb_comments=0):
@@ -83,6 +84,7 @@ class RedditDocument (Documents):
         return "RedditDocument"
         
 
+# =============== La classe ArxivDocument ===============
 class ArxivDocument(Documents):
     
     def __init__(self, titre="", auteur="", date="", url="", texte="", co_auteurs=None):
