@@ -64,3 +64,17 @@ class Corpus:
             vocabulaire.update(mots)
         return {mot: idx for idx, mot in enumerate(vocabulaire)}
     
+    def nettoyer_texte(self,texte):
+        # Mise en minuscule
+        texte = texte.lower()
+        
+        # Remplacement des passages à la ligne
+        texte = texte.replace('\n', ' ')
+        
+        # Remplacement des ponctuations et des chiffres
+        texte = re.sub(r'[^\w\s]', ' ', texte)  # Remplace les ponctuations par des espaces
+        texte = re.sub(r'\d+', ' ', texte)  # Remplace les chiffres par des espaces
+        
+        # Suppression des espaces multiples
+        texte = re.sub(r'\s+', ' ', texte).strip()
+        return texte
