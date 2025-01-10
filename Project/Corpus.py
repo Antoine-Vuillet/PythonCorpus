@@ -15,6 +15,8 @@ class Corpus:
         self.ndoc = 0
         self.naut = 0
 
+    # Ajoute un document au corpus et mets à jour les auteurs et co-auteurs
+
     def add(self, doc):
         # Gérer l'auteur principal
         auteur_principal = doc.auteur if isinstance(doc.auteur, str) else str(doc.auteur)
@@ -24,7 +26,7 @@ class Corpus:
             self.aut2id[auteur_principal] = self.naut
         self.authors[self.aut2id[auteur_principal]].add(doc.texte)
 
-        # Gérer les co-auteurs
+        # Gérer les co-auteurs si le document est de type ArxivDocument
         if isinstance(doc, ArxivDocument):
             for co_auteur in doc.co_auteurs:
                 co_auteur_str = co_auteur if isinstance(co_auteur, str) else str(co_auteur)
@@ -33,7 +35,7 @@ class Corpus:
                     self.authors[self.naut] = Author(co_auteur_str)
                     self.aut2id[co_auteur_str] = self.naut
                 self.authors[self.aut2id[co_auteur_str]].add(doc.texte)
-
+        #Mets à jour le nombre de documents
         self.ndoc += 1
         self.id2doc[self.ndoc] = doc
 
@@ -51,12 +53,12 @@ class Corpus:
         docs = list(self.id2doc.values())
         docs = list(sorted(docs, key=lambda x: x.titre.lower()))
         return "\n".join([f"{str(doc)}\tType : {doc.getType()}" for doc in docs])
-
-    # def search(self,)
     
+    # Transforme tout les documents en une grande chaine de caractère
     def generer_chaine(self):
         return ' '.join(doc.texte for doc in self.id2doc.values())
 
+    #Nettoie les texte puis créé un vocabulaire en attribuant des identifiants à chaque mots
     def construire_vocabulaire(self):
         vocabulaire = set()
         for doc in self.id2doc.values():
@@ -64,6 +66,7 @@ class Corpus:
             vocabulaire.update(mots)
         return {mot: idx for idx, mot in enumerate(vocabulaire)}
     
+    #Remplace tout les caractère non alphabétique du texte par des espaces et met le texte entier en minuscule
     def nettoyer_texte(self,texte):
         # Mise en minuscule
         texte = texte.lower()

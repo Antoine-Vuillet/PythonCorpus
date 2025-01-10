@@ -2,7 +2,7 @@ import Classes
 import Corpus
 
 
-
+#Test unitaire de la création d'auteur et de l'ajout d'un document
 def add_author_test():
     author = Classes.Author("Pierre")
     author.add("newDocument")
@@ -11,6 +11,7 @@ def add_author_test():
     else:
         print("le test de la fonction add() d'Auteur ne fonctionne pas")
 
+#Test unitaire de la création d'un nouveau document et de l'attribution de son type
 def newDocumentTest():
     arxiv_doc = Classes.ArxivDocument(
         titre="ArxivTitle",
@@ -38,6 +39,7 @@ def newDocumentTest():
         print("La création d'un document de type ArxivDocument ne fonctionne pas")
 
 
+#Test unitaire de la création d'un nouveau corpus et de l'addition de nouveau document à l'intérieur
 def additionToCorpus_test():
     arxiv_doc = Classes.ArxivDocument(
         titre="ArxivTitle",
