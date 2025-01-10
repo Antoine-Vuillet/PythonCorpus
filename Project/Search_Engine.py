@@ -84,32 +84,38 @@ class SearchEngine:
         counting = dict()
         for doc_id in range(matf.shape[0]):
             doc_row = matf[doc_id, :]
-            count =sum(doc_row[0, word_id] > 0 for word_id in words_id.values() if word_id < matf.shape[1])
+            count = sum(doc_row[0, word_id] > 0 for word_id in words_id.values() if word_id < matf.shape[1])
             if count > 0:
                 counting[doc_id] = count
-        df = pd.DataFrame(list(counting.items()), columns=["Date", "Occurrences"])
 
-        df = df.sort_values("Date")
+        print(counting)
 
+        newlist = {}
+        for x in counting.keys():
+            key = self.corpus.id2doc[x + 1].getDate()
+            newlist[key] = counting[x]
 
+        df = pd.DataFrame(list(newlist.items()), columns=["Date", "Occurrences"])
+        df["Date"] = pd.to_datetime(df["Date"])
+        df["Month_Year"] = df["Date"].dt.to_period("M") 
 
+        result = df.groupby("Month_Year")["Occurrences"].mean().reset_index()
+        result["Month_Year"] = result["Month_Year"].astype(str)
 
         plt.figure(figsize=(10, 5))
+        plt.bar(result["Month_Year"], result["Occurrences"], color="skyblue", edgecolor="black")
 
-        plt.plot(df["Date"], df["Occurrences"], marker="o",linestyle="-", label=f"'{propre}'")
+        plt.title(f"Histogram of Word Occurrences for '{propre}' Over Time")
+        plt.xlabel("Month-Year")
+        plt.ylabel("Total Occurrences")
+        plt.xticks(rotation=45)
+        plt.grid(axis="y", linestyle="--", alpha=0.7)
 
-        plt.title(f"Évolution temporelle du mot '{propre}'")
-
-        plt.xlabel("Date")
-
-        plt.ylabel("Occurrences")
-
-        plt.grid(True)
-
-        plt.legend()
-
+        plt.tight_layout()
         plt.show()
+
         return counting
+
         
 
 
