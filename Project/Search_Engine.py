@@ -95,23 +95,18 @@ class SearchEngine:
             if propre in self.vocabulaire:
                 words_id[propre] = self.vocabulaire[propre]
         matf = self.construire_matrice_tf()
-        print(matf[:5, :5])
-        print(words_id)
         counting = dict()
         for doc_id in range(matf.shape[0]):
             doc_row = matf[doc_id, :]
             count = sum(doc_row[0, word_id] for word_id in words_id.values() if word_id < matf.shape[1])
             if count > 0:
                 counting[doc_id] = count
-                print(f"Document {doc_id}: {count} occurrences")
-
         newlist = {}
         for x in counting.keys():
             key = self.corpus.id2doc[x + 1].getDate()
             newlist[key] = counting[x]
 
         df = pd.DataFrame(list(newlist.items()), columns=["Date", "Occurrences"])
-        print(df.head())
         df["Date"] = pd.to_datetime(df["Date"])
         df["Month_Year"] = df["Date"].dt.to_period("M") 
 
