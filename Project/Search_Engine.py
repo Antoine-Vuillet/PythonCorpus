@@ -88,8 +88,6 @@ class SearchEngine:
             if count > 0:
                 counting[doc_id] = count
 
-        print(counting)
-
         newlist = {}
         for x in counting.keys():
             key = self.corpus.id2doc[x + 1].getDate()
