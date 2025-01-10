@@ -133,7 +133,7 @@ class Corpus:
         print(f"Nombre de mots différents dans le corpus: {nb_mots_differents}")
         
         # Les n mots les plus fréquents
-        n = d  # Assuming d is the number of top frequent words to display
+        n = d  # Nombre de mots à afficher
         mots_les_plus_frequents = tableau_freq.loc['Document Frequency'].sort_values(ascending=False).head(n)
         print(f"Les {n} mots les plus fréquents dans le corpus:")
         print(mots_les_plus_frequents)
